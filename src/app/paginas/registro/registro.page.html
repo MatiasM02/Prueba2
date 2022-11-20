@@ -1,0 +1,98 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Registro</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="formularioRegistro">
+        <ion-item>
+          <ion-label position="floating">Nombre</ion-label>
+          <ion-input formControlName="firstname"></ion-input>
+          <ion-note slot="error" *ngIf="campo('firstname').invalid && campo('firstname').errors && campo('firstname').errors.required && fueTocado('firstname')">
+            Este campo es requerido
+          </ion-note>
+          <ion-note slot="error" *ngIf="campo('firstname').invalid && campo('firstname').errors && campo('firstname').errors.maxlength && fueTocado('firstname')">
+            Los caracteres Maximos son 15
+          </ion-note>
+          <ion-note slot="error" *ngIf="campo('firstname').invalid && campo('firstname').errors && campo('firstname').errors.minlength && fueTocado('firstname')">
+            Los caracteres minimos son 1
+          </ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Apellido</ion-label>
+          <ion-input formControlName="lastname"></ion-input>
+          <ion-note slot="error" *ngIf="campo('lastname').invalid && campo('lastname').errors && campo('lastname').errors.required && fueTocado('lastname')">
+            Este campo es requerido
+          </ion-note>
+          <ion-note slot="error" *ngIf="campo('lastname').invalid && campo('lastname').errors && campo('lastname').errors.maxlength && fueTocado('lastname')">
+            Los caracteres Maximos son 20
+          </ion-note>
+          <ion-note slot="error" *ngIf="campo('lastname').invalid && campo('lastname').errors && campo('lastname').errors.minlength && fueTocado('lastname')">
+            Los caracteres minimos son 4
+          </ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Edad</ion-label>
+          <ion-input formControlName="age"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Usuario</ion-label>
+          <ion-input formControlName="username"></ion-input>
+          <ion-note slot="error" *ngIf="campo('username').invalid && campo('username').errors && campo('username').errors.required && fueTocado('username')">
+            Este campo es requerido
+          </ion-note>
+          <ion-note slot="error" *ngIf="campo('username').invalid && campo('username').errors && campo('username').errors.maxlength && fueTocado('username')">
+            Los caracteres Maximos son 10
+          </ion-note>
+          <ion-note slot="error" *ngIf="campo('username').invalid && campo('username').errors && campo('username').errors.minlength && fueTocado('username')">
+            Los caracteres minimos son 5
+          </ion-note>
+        </ion-item>
+        <ion-list>
+          <ion-item>
+            <ion-label position="floating">Fecha Nacimiento</ion-label>
+            <ion-input formControlName="birthDate"></ion-input>
+            <br>
+            <ion-datetime presentation="date" showDefaultButtons="true" min="1991-01-01" max="2022-11-18"></ion-datetime>
+          </ion-item>
+
+        </ion-list>
+        <ion-item>
+          <ion-segment value="default">
+            <ion-segment-button value="default">
+              <ion-label>Hombre</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="segment">
+              <ion-label>Mujer</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Contraseña</ion-label>
+          <ion-input formControlName="contra" type="password"></ion-input>
+          <ion-note slot="error" *ngIf="campo('contra').invalid && campo('contra').errors && campo('contra').errors.required && fueTocado('contra')">
+            Este campo es requerido
+          </ion-note>
+          <ion-note slot="error" *ngIf="campo('contra').invalid && campo('contra').errors && campo('contra').errors.maxlength && fueTocado('contra')">
+            Los caracteres Maximos son 16
+          </ion-note>
+          <ion-note slot="error" *ngIf="campo('contra').invalid && campo('contra').errors && campo('contra').errors.minlength && fueTocado('contra')">
+            Los caracteres minimos son 8
+          </ion-note>
+        </ion-item>
+        <br>
+        <ion-button [routerLink]="['']"><ion-icon name="arrow-back-outline"></ion-icon></ion-button>
+        <ion-button (click)="registrarse()">Registrarse</ion-button>
+
+      </form>
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

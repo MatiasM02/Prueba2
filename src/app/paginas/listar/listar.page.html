@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>lista de Productos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let p of apiProductos.listaProductos$ | async " [id]="p.id">
+    <img [src]="p.images">
+    <ion-card-header>
+      <ion-card-title>{{ p.title }}</ion-card-title>
+      <ion-card-subtitle>Descripcion: {{ p.description }}</ion-card-subtitle>
+      <ion-card-subtitle>Precio: {{ p.price }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-button fill="clear" [routerLink]="['/detalle',p.id]" >Mas informacion</ion-button>
+  </ion-card>
+  <ion-infinite-scroll (ionInfinite)="cargarMasDatos()">
+    <ion-infinite-scroll-content
+      loadingText="Cargando ..."
+    ></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>
